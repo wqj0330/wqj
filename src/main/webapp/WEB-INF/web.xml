@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee "
+	id="WebApp_ID" version="2.5">
+
+	<display-name>test for jxxy</display-name>
+
+	<!-- Spring配置 -->
+	<!-- 该元素用来声明应用范围(整个WEB项目)内的上下文初始化参数 -->
+	<!-- param-name 设定上下文的参数名称。必须是唯一名称
+         param-value 设定的参数名称的值 -->
+	<context-param>     <!-- quartz配置 -->
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring/applicationContext.xml,classpath:quartz.xml</param-value>
+    </context-param>
+
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>classpath:log4j.xml</param-value>
+	</context-param>
+
+
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+<!-- 定义Filter   filter用于拦截用户请求 -->
+	<filter>
+	    <!-- Filter的名字 -->
+		<filter-name>adminLoginFilter</filter-name>
+		<!-- Filter的实现类 -->
+		<filter-class>me.anchora.inpaasmgr.filter.AdminLoginFilter</filter-class>
+	</filter>
+	<!-- 定义Filter拦截的URL地址 -->
+	<filter-mapping>
+	    <!-- Filter的名字 -->
+		<filter-name>adminLoginFilter</filter-name>
+		<!-- Filter负责拦截的URL 全部以/admin/*的请求,js中的url请求都是以/admin/开始的，故<url-pattern>/admin/*</url-pattern> -->
+		<url-pattern>/admin/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- listener监听 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+
+	<!-- 图形servlet -->
+	<servlet>
+		<servlet-name>DisplayChart</servlet-name>
+		<servlet-class>org.jfree.chart.servlet.DisplayChart</servlet-class>
+	</servlet>
+<!-- spring mvc DispatcherServlet 配置 -->
+	<servlet>
+		<servlet-name>inpaasmgr</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup> <!-- 表示优先加载这个servlet -->
+	</servlet>
+	<!-- servlet-mapping 主要是截获请求的，  
+  如果你的url－pattern定义的是路径，那么以后所有对这个路径下资源的请求都会由servlet－name中定义的servlet处理；  
+  如果你的url－pattern定义的是资源格式例如*.do等，那么对于所有符合这种格式的资源的请求都由指定的servlet处理。-->
+	<servlet-mapping>
+		<servlet-name>inpaasmgr</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	<!--首先这四个都是注册一个servlet组件必须的四个节点
+<servlet-name> 这个是我们要注册servlet的名字,一般跟Servlet类名有关
+<servlet-class> 这个就是指向我们要注册的servlet 的类地址, 要带包路径
+以上两个包在一个servlet 节点之下.
+
+<servlet-mapping> 是用来配置我们注册的组件的访问路径,里面包括两个节点
+一个是 <servlet-name> 这个要与 前面写的servlet那么一直
+另一个是 <url-pattern> 配置这个组件的访问路径
+
+举个例子
+<servlet>
+<servlet-name>LoginServlet</servlet-name>
+<servlet-class>com.breeze.servlet.LoginServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>LoginServlet</servlet-name> 与上面的 <servlet-name> 要一致
+<url-pattern>/servlet/LoginServlet</url-pattern>
+</servlet-mapping>
+  -->
+  
+  
+	<servlet>
+	    <!-- 验证码配置ValidateCodeServlet（ValidateCodeServlet是一个Servlet），Servlet/jsp配置都在web.xml中 -->
+		<servlet-name>ValidateCodeServlet</servlet-name>
+		<servlet-class>
+			me.anchora.inpaasmgr.servlet.ValidateCodeServlet
+		</servlet-class>
+		<init-param>
+			<param-name>width</param-name>
+			<param-value>80</param-value>
+		</init-param>
+		<init-param>
+			<param-name>height</param-name>
+			<param-value>36</param-value>
+		</init-param>
+		<init-param>
+			<param-name>codeCount</param-name>
+			<param-value>5</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ValidateCodeServlet</servlet-name>
+		<url-pattern>/validateCodeServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 配置Web应用的首页-->
+	<welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- 400错误 -->
+	<error-page>
+		<error-code>400</error-code>
+		<location>/error.jsp</location>
+	</error-page>
+	<!-- 404 页面不存在错误 -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error.jsp</location>
+	</error-page>
+	<!-- 500 服务器内部错误 -->
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error.jsp</location>
+	</error-page>
+	<!-- java.lang.Exception异常错误,依据这个标记可定义多个类似错误提示 -->
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/error.jsp</location>
+	</error-page>
+	<!-- java.lang.NullPointerException异常错误,依据这个标记可定义多个类似错误提示 -->
+	<error-page>
+		<exception-type>java.lang.NullPointerException</exception-type>
+		<location>/error.jsp</location>
+	</error-page>
+
+	<error-page>
+		<exception-type>javax.servlet.ServletException</exception-type>
+		<location>/error.jsp</location>
+	</error-page>
+
+</web-app>

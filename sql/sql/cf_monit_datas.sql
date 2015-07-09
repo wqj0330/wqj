@@ -1,0 +1,22 @@
+CREATE TABLE `cf_monit_datas` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '编号ID',
+  `cf_node_uuid` varchar(255) NOT NULL COMMENT 'cf node uuid',
+  `cf_node_name` varchar(255) NOT NULL COMMENT 'cf node 名称',
+  `cf_node_ip` varchar(255) NOT NULL COMMENT 'cf node ip',
+  `cf_node_uptime` varchar(255) NOT NULL COMMENT 'cf node uptime',
+  `num_cores` float(20,2) NOT NULL COMMENT 'num_cores',
+  `cpu` float(20,2) NOT NULL COMMENT 'cpu',
+  `cpu_load_avg` float(20,2) NOT NULL COMMENT 'cpu_load_avg',
+  `mem_bytes` float(20,2) NOT NULL COMMENT 'mem_bytes',
+  `mem_used_bytes` float(20,2) NOT NULL COMMENT 'mem_used_bytes',
+  `mem_free_bytes` float(20,2) NOT NULL COMMENT 'mem_free_bytes',
+  `available_memory_ratio` float(20,2) NOT NULL COMMENT 'available_memory_ratio',
+  `available_disk_ratio` float(20,2) NOT NULL COMMENT 'available_disk_ratio',
+  `remark` varchar(1000) COMMENT '备注',
+  `created_at` datetime COMMENT '创建日期',
+  `created_by` varchar(100) COMMENT '创建者',
+  `updated_at` datetime COMMENT '更新日期',
+  `updated_by` varchar(100) COMMENT '更新者',
+ PRIMARY KEY (`id`),
+ INDEX `i_app_monit_datas_1` (`cf_node_name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;

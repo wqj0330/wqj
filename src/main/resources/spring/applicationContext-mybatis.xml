@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:cloud="http://schema.cloudfoundry.org/spring"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://schema.cloudfoundry.org/spring
+        http://schema.cloudfoundry.org/spring/cloudfoundry-spring.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-3.2.xsd"
+	default-lazy-init="false">        
+	<!-- <bean id="boshdbSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="DS-boshdb" />
+		<property name="mapperLocations" value="classpath:sqlMaps/boshdb/*Mapper.xml" />
+		<property name="typeAliasesPackage" value="me.anchora.inpaasmgr.entry.boshdb" />
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="me.anchora.inpaasmgr.dao.boshdb" />
+		<property name="sqlSessionFactoryBeanName" value="boshdbSessionFactory" />
+	</bean> -->
+	
+	<bean id="ccdbSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="DS-ccdb" />
+		<property name="mapperLocations" value="classpath:sqlMaps/ccdb/*Mapper.xml" />
+		<property name="typeAliasesPackage" value="me.anchora.inpaasmgr.entry.ccdb" />
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="me.anchora.inpaasmgr.dao.ccdb" />
+		<property name="sqlSessionFactoryBeanName" value="ccdbSessionFactory" />
+	</bean>
+	
+	<bean id="uaadbSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="DS-uaadb" />
+		<property name="mapperLocations" value="classpath:sqlMaps/uaadb/*Mapper.xml" />
+		<property name="typeAliasesPackage" value="me.anchora.inpaasmgr.entry.uaadb" />
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="me.anchora.inpaasmgr.dao.uaadb" />
+		<property name="sqlSessionFactoryBeanName" value="uaadbSessionFactory" />
+	</bean>
+
+	<bean id="inpaasSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="DS-inpaas" />
+		<property name="mapperLocations" value="classpath:sqlMaps/inpaas/*Mapper.xml" />
+		<property name="typeAliasesPackage" value="me.anchora.inpaasmgr.entry.inpaas" />
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="me.anchora.inpaasmgr.dao.inpaas" />
+		<property name="sqlSessionFactoryBeanName" value="inpaasSessionFactory" />
+	</bean>
+	
+	<bean id="inpaasmgrSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="DS-inpaasmgr" />
+		<property name="mapperLocations" value="classpath:sqlMaps/inpaasmgr/*Mapper.xml" />
+		<property name="typeAliasesPackage" value="me.anchora.inpaasmgr.entry.inpaasmgrdb" />
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="me.anchora.inpaasmgr.dao.inpaasmgr" />
+		<property name="sqlSessionFactoryBeanName" value="inpaasmgrSessionFactory" />
+	</bean>
+</beans>

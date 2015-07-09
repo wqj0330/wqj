@@ -1,0 +1,21 @@
+CREATE TABLE `app_monit_datas` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '编号ID',
+  `app_guid` varchar(255) NOT NULL COMMENT 'app guid',
+  `app_name` varchar(255) NOT NULL COMMENT 'app 名称',
+  `instance_id` bigint(20) NOT NULL COMMENT 'app instance ID',
+  `app_state` varchar(255) NOT NULL COMMENT 'app state',
+  `app_mem_limit` bigint(20) NOT NULL COMMENT 'app mem limit bytes',
+  `app_disk_limit` bigint(20) NOT NULL COMMENT 'app disk limit bytes',
+  `app_mem_used` bigint(20) COMMENT 'app mem used bytes',
+  `app_disk_used` bigint(20) COMMENT 'app disk used bytes',
+  `app_cpu_used` float(20,6) COMMENT 'app cpu used',
+  `app_host` varchar(255) NOT NULL COMMENT 'app host',
+  `app_uptime` varchar(255) COMMENT 'app uptime',
+  `remark` varchar(1000) COMMENT '备注',
+  `created_at` datetime COMMENT '创建日期',
+  `created_by` varchar(100) COMMENT '创建者',
+  `updated_at` datetime COMMENT '更新日期',
+  `updated_by` varchar(100) COMMENT '更新者',
+ PRIMARY KEY (`id`),
+ INDEX `i_app_monit_datas_1` (`app_guid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;

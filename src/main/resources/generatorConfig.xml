@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!-- 
+    <classPathEntry location="/home/jiang/.m2/repository/postgresql/postgresql/9.1-901-1.jdbc4/postgresql-9.1-901-1.jdbc4.jar" />
+     
+    <context id="context2" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$" />
+            <property name="replaceString" value="Criteria" />
+        </plugin>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+        <jdbcConnection driverClass="org.postgresql.Driver" connectionURL="jdbc:postgresql://10.0.0.112:5524/ccdb" userId="ccadmin" password="c1oudc0w" />
+        <javaModelGenerator targetPackage="me.anchora.inpaasmgr.entry.ccdb" targetProject="/home/jiang/git/MyProject/src/main/java">
+            <property name="trimStrings" value="true" />
+            <property name="rootClass" value="me.anchora.inpaasmgr.entry.base.PageEntry" />
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="sqlMaps.ccdb" targetProject="/home/jiang/git/MyProject/src/main/resources" />
+        <javaClientGenerator targetPackage="me.anchora.inpaasmgr.dao.ccdb" targetProject="/home/jiang/git/MyProject/src/main/java"
+            type="XMLMAPPER" />
+        <table schema="public" tableName="domains"/>
+        <table schema="public" domainObjectName="CcSchemaMigrations" tableName="schema_migrations"/>
+        <table schema="public" domainObjectName="CcUsers" tableName="users" />
+        <table schema="public" domainObjectName="Apps" tableName="apps" />
+        <table schema="public" tableName="app_events"/>
+        <table schema="public" tableName="app_usage_events"/>
+        <table schema="public" tableName="apps_routes"/>
+        <table schema="public" tableName="billing_events"/>
+        <table schema="public" tableName="buildpacks"/>
+        <table schema="public" tableName="delayed_jobs"/>
+        <table schema="public" tableName="domains_organizations"/>
+        <table schema="public" tableName="droplets"/>
+        <table schema="public" tableName="events"/>
+        <table schema="public" tableName="organizations_auditors"/>
+        <table schema="public" tableName="organizations_billing_managers"/>
+        <table schema="public" tableName="organizations_managers"/>
+        <table schema="public" tableName="organizations_users"/>
+        <table schema="public" tableName="routes"/>
+        <table schema="public" tableName="service_auth_tokens"/>
+        <table schema="public" tableName="service_bindings"/>
+        <table schema="public" tableName="service_brokers"/>
+        <table schema="public" tableName="service_instances"/>
+        <table schema="public" tableName="service_plan_visibilities"/>
+        <table schema="public" tableName="services"/>
+        <table schema="public" tableName="spaces"/>
+        <table schema="public" tableName="spaces_auditors"/>
+        <table schema="public" tableName="spaces_developers"/>
+        <table schema="public" tableName="spaces_managers"/>
+        <table schema="public" tableName="stacks"/>
+        <table schema="public" domainObjectName="CcTasks" tableName="tasks"/>
+        <table schema="public" tableName="service_plans">
+            <columnOverride column="public" property="publicc"/>
+        </table>
+        <table schema="public" tableName="organizations">
+            <property name="rootClass" value="me.anchora.inpaasmgr.entry.base.SuperQuotaDefinitions" />
+        </table>
+        <table schema="public" tableName="quota_definitions"/>
+    </context>
+   
+   <context id="context3" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$" />
+            <property name="replaceString" value="Criteria" />
+        </plugin>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+        <jdbcConnection driverClass="org.postgresql.Driver" connectionURL="jdbc:postgresql://10.0.0.112:5524/uaadb" userId="uaaadmin" password="c1oudc0w" />
+        <javaModelGenerator targetPackage="me.anchora.inpaasmgr.entry.uaadb" targetProject="/home/jiang/git/MyProject/src/main/java">
+            <property name="trimStrings" value="true" />
+            <property name="rootClass" value="me.anchora.inpaasmgr.entry.base.PageEntry" />
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="sqlMaps.uaadb" targetProject="/home/jiang/git/MyProject/src/main/resources" />
+        <javaClientGenerator targetPackage="me.anchora.inpaasmgr.dao.uaadb" targetProject="/home/jiang/git/MyProject/src/main/java"
+            type="XMLMAPPER" />
+        <table schema="public" domainObjectName="UaaUsers" tableName="users" />
+        <table schema="public" domainObjectName="Groups" tableName="groups" />
+        <table schema="public" tableName="authz_approvals"/>
+        <table schema="public" tableName="external_group_mapping"/>
+        <table schema="public" tableName="group_membership"/>
+        <table schema="public" tableName="oauth_client_details"/>
+        <table schema="public" tableName="oauth_code"/>
+        <table schema="public" tableName="sec_audit"/>
+    </context> 
+    -->
+   <classPathEntry location="/home/jiang/.m2/repository/mysql/mysql-connector-java/5.1.26/mysql-connector-java-5.1.26.jar"/> 
+    <context id="context4" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$" />
+            <property name="replaceString" value="Criteria" />
+        </plugin>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+        <!--数据库链接URL，用户名、密码 -->  
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.1.12:3306/mopaasv2"
+            userId="root" password="mysql" />
+        <!-- 生成模型的包名和位置--> 
+        <javaModelGenerator targetPackage="me.anchora.inpaasmgr.entry.inpaas" targetProject="/home/jiang/git/MyProject/src/main/java">
+            <property name="trimStrings" value="true" />
+               <property name="rootClass" value="me.anchora.inpaasmgr.entry.base.PageEntry" /> 
+        </javaModelGenerator>
+        <!-- 生成映射文件的包名和位置--> 
+        <sqlMapGenerator targetPackage="sqlMaps.inpaas" targetProject="/home/jiang/git/MyProject/src/main/resources" />
+       <!-- 生成DAO的包名和位置-->  
+        <javaClientGenerator targetPackage="me.anchora.inpaasmgr.dao.inpaas" targetProject="/home/jiang/git/MyProject/src/main/java"
+            type="XMLMAPPER" />
+        <!-- 要生成哪些表--> 
+        <!--  
+        <table domainObjectName="Login" tableName="login" ></table>
+             <table domainObjectName="SystemConfig" tableName="system_config" ></table> -->
+           <!--  <table domainObjectName="UserBalances" tableName="user_balances" ></table> 
+             <table domainObjectName="UserBalanceDetails" tableName="user_balance_details" ></table>
+             <table domainObjectName="Roles" tableName="roles" ></table>
+             <table domainObjectName="Menus" tableName="menus" ></table>
+             <table domainObjectName="MenuDetails" tableName="menu_details" ></table>
+             <table domainObjectName="MenuLanguages" tableName="menu_languages" ></table> 
+             <table domainObjectName="RoleUsers" tableName="role_users" ></table>
+             <table domainObjectName="RoleMenus" tableName="role_menus" ></table>  --> 
+             <!--     <property name="rootClass" value="me.anchora.inpaasmgr.entry.base.LoginSuper"> --> 
+             <table domainObjectName="PaasUsers" tableName="paas_users" ></table>
+        </context>
+</generatorConfiguration>
